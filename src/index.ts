@@ -65,3 +65,6 @@ export function parse(source: string, options?: Partial<ParseOptions>) {
     return thrift;
   }
 }
+
+export * from "./generater";
+export * from "./types";

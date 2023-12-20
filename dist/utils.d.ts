@@ -1,0 +1,11 @@
+import { FunctionType, ListType, SyntaxType } from "./types";
+export declare const randomNum: (min: number, max: number) => number;
+export declare const generate_num: (type: SyntaxType) => number;
+export declare const generate_double_num: () => string;
+export declare const generate_by_type: (type: FunctionType) => any;
+export declare const generate_basic: (type: SyntaxType) => string | number | undefined;
+export declare const generate_list: (type: ListType) => any[];
+export declare const generate_definition_obj: (name: string) => any;
+export declare const generate_string: (min: number, max: number) => string;
+export declare const generate_en: (min: number, max: number) => string;
+export declare const generate_cn: (min: number, max: number) => string;

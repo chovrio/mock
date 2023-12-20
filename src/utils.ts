@@ -17,11 +17,11 @@ export const generate_num = (type: SyntaxType) => {
     // return randomNum(0, Math.pow(2, 53));
     default:
       return randomNum(0, 65535);
-      break;
   }
 };
 
-export const generate_double_num = () => (Math.random() * 100).toFixed(2);
+export const generate_double_num = () =>
+  Number((Math.random() * 100).toFixed(2));
 
 export const generate_by_type = (type: FunctionType) => {
   switch (type.type) {
