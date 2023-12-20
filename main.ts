@@ -1,7 +1,6 @@
 import { parse } from "./src";
 import { generate } from "./src/generater";
 import { ThriftDocument } from "./src/types";
-
 const ast = parse(`  
 include "../base.thrift"
 
@@ -363,6 +362,6 @@ service ProviderService {
   `);
 
 if (ast.type === "ThriftDocument") {
-  const obj = generate(ast as ThriftDocument, ["GetDurationQuadrantChartResp"]);
-  console.log(obj.get("GetDurationQuadrantChartResp"));
+  const obj = generate(ast as ThriftDocument, ["GetAdoptedValueSummaries"]);
+  console.log(obj.get("GetAdoptedValueSummaries"));
 }
