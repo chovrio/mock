@@ -3,5 +3,5 @@
   "compilerOptions": {
     "rootDir": "src"
   },
-  "exclude": ["lib", "test", "main.ts"]
+  "exclude": ["dist", "test", "main.ts"]
 }

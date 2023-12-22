@@ -69,10 +69,14 @@ export const generate_list = (type: ListType) => {
 
 export const generate_definition_obj = (name: string) => {
   if (!definition_map.has(name)) {
-    return {};
+    return {
+      $$msg: "idl文件中不存在的函数",
+    };
   }
   const definition = definition_map.get(name);
-  const result_obj: any = {};
+  const result_obj: any = {
+    $$msg: "该对象由mock生成，为虚假数据",
+  };
   switch (definition?.type) {
     case SyntaxType.StructDefinition:
       definition.fields.some((field) => {
