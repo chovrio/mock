@@ -71,11 +71,17 @@ export function createScanner(
 ) {
   const source: string = src;
   const tokens: Array<Token> = [];
+  // 行
   let line: number = 1;
+  // 列
   let column: number = 1;
+  // 开始行
   let startLine: number = 1;
+  // 开始列
   let startColumn: number = 1;
+  // 开始下标
   let startIndex: number = 1;
+  // 当前下标
   let currentIndex: number = 0;
 
   function scan(): Array<Token> {
@@ -206,7 +212,7 @@ export function createScanner(
     } else {
       integer();
       if (peek() === "e" || peek() === "E") {
-        enotation();
+        e_notation();
       } else if (peek() === "." && isDigit(peekNext())) {
         float();
       } else {
@@ -220,7 +226,7 @@ export function createScanner(
     }
     commitToken(SyntaxType.HexLiteral);
   }
-  function enotation(): void {
+  function e_notation(): void {
     consume("e") || consume("E");
     consume("-") || consume("+");
     if (isDigit(peek())) {
@@ -234,7 +240,7 @@ export function createScanner(
     consume(".");
     integer();
     if (peek() === "e" || peek() === "E") {
-      enotation();
+      e_notation();
     } else {
       commitToken(SyntaxType.FloatLiteral);
     }
@@ -293,7 +299,7 @@ export function createScanner(
       ) {
         /**
          * We ignore stars and spaces after a new line to normalize comment formatting.
-         * We're only keeping the text of the comment without the extranious formatting.
+         * We're only keeping the text of the comment without the extraneous formatting.
          */
       } else {
         comment += current();
@@ -339,7 +345,7 @@ export function createScanner(
     }
     return false;
   }
-  /** 进行 */
+  /** 前进一位 */
   function advance(): string {
     currentIndex++;
     column++;
@@ -391,6 +397,7 @@ export function createScanner(
     const loc: TextLocation = currentLocation();
     tokens.push(createToken(type, value, loc));
   }
+  /** 判断是否后面没内容了 */
   function isAtEnd(): boolean {
     return currentIndex >= source.length;
   }

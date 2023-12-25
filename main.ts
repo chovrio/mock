@@ -1,5 +1,5 @@
 import { parse } from "./src";
-import { generate } from "./src/generater";
+import { generate } from "./src/generator";
 import { ThriftDocument } from "./src/types";
 const ast = parse(`  
 include "../base.thrift"

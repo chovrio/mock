@@ -1,4 +1,4 @@
-import { definition_map } from "./generater";
+import { definition_map } from "./generator";
 import { FieldType, FunctionType, ListType, SyntaxType } from "./types";
 
 export const randomNum = (min: number, max: number) => {

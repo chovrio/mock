@@ -25,7 +25,11 @@ export const defaultOptions: ParseOptions = {
   files: [],
   organize: true,
 };
+
+const map = new Map<string, ThriftDocument>();
 export function parse(source: string, options?: Partial<ParseOptions>) {
+  if (map.has(source)) return map.get(source);
+
   const mergedOptions: ParseOptions = { ...defaultOptions, ...options };
   const debug: Debugger = createDebugger(source);
   const scanner: Scanner = createScanner(source, handleError);
@@ -62,9 +66,10 @@ export function parse(source: string, options?: Partial<ParseOptions>) {
       errors: debug.getErrors(),
     };
   } else {
+    map.set(source, thrift);
     return thrift;
   }
 }
 
-export * from "./generater";
+export * from "./generator";
 export * from "./types";

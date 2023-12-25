@@ -1,16 +1,10 @@
 import {
   IncludeDefinition,
-  NamespaceDefinition,
   SyntaxType,
   ThriftDocument,
   ThriftStatement,
 } from "./types";
-import {
-  generate_by_type,
-  generate_definition_obj,
-  generate_double_num,
-  generate_num,
-} from "./utils";
+import { generate_definition_obj } from "./utils";
 
 export const definition_map = new Map<
   string,
